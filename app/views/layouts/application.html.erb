@@ -9,14 +9,6 @@
   </head>
 
   <body>
-    <% flash.each do |key, value| %>
-      <%= content_tag(
-        :div,
-        value,
-        :class => "alert alert-#{key == 'alert' ? 'danger' : 'success'}",
-        :role => "alert") %>
-    <% end %>
-
     <nav class="navbar navbar-default">
       <div class="container-fluid">
         <div class="navbar-header">
@@ -30,6 +22,7 @@
         <ul class="nav navbar-nav navbar-right">
           <% if user_signed_in? %>
             <li class="navbar-text"><%= current_user.email %></li>
+            <li><%= link_to "Manage Blogs", blogs_path, :class => "navbar-link" %></li>
             <li><%= link_to "Settings", edit_user_registration_path, :class => "navbar-link" %></li>
             <li><%= link_to "Sign out", destroy_user_session_path, method: :delete, :class => "navbar-link" %></li>
           <% else %>
@@ -39,6 +32,21 @@
         </ul>
       </div>
     </nav>
+
+    <% flash.each do |key, value| %>
+      <% alert_type = key %>
+      <%# for devise %>
+      <% alert_type = 'danger'  if alert_type == 'alert' %>
+      <% alert_type = 'success' if alert_type == 'notice' %>
+
+      <%= content_tag(:div, value, :class => "alert alert-#{alert_type}", :role => "alert") %>
+    <% end %>
+
+    <% if @validation_errors %>
+      <% @validation_errors.full_messages.each do |msg| %>
+        <%= content_tag(:div, msg, :class => "alert alert-danger", :role => "alert") %>
+      <% end %>
+    <% end %>
 
     <%= yield %>
   </body>
