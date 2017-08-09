@@ -7,4 +7,5 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :blogs, :path => 'admin/blog'
+  resources :articles, :path => 'admin/:blog_id/article'
 end

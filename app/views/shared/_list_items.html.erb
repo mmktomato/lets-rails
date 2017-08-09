@@ -1,0 +1,14 @@
+<% if items %>
+  <ul class="list-group">
+    <% items.each do |item| %>
+      <li class="list-group-item">
+        <a href="<%= create_detail_url.call(item) %>">
+          <h3 class="list-group-item-heading"><%= item.title %></h3>
+          <% if defined? item.description %>
+            <p class="list-group-item-text"><%= item.description %></p>
+          <% end %>
+        </a>
+      </li>
+    <% end %>
+  </ul>
+<% end %>

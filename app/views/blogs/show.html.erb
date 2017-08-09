@@ -1,1 +1,3 @@
-TODO: implement blog detail.
+<%= render 'shared/list_items', items: @articles, create_detail_url: lambda { |article| edit_article_path(article) } %>
+
+<a href="<%= new_article_path(blog_id: @blog.id) %>">create new article.</a>

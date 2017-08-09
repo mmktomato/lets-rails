@@ -1,5 +1,6 @@
 class Blog < ApplicationRecord
   belongs_to :user
+  has_many :articles, dependent: :destroy
 
   validates :screen_name,
     presence: true,

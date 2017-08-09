@@ -2,7 +2,7 @@ class BlogsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @blogs = Blog.all
+    @blogs = current_user.blogs
   end
 
   def new
@@ -20,6 +20,8 @@ class BlogsController < ApplicationController
   end
 
   def show
+    @blog = Blog.find(params[:id])
+    @articles = Article.where(blog_id: @blog.id)
   end
 
   private def blog_params(param)
