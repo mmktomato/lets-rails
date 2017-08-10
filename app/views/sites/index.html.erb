@@ -1,0 +1,9 @@
+<%= render 'header', blog: @blog %>
+
+<% if @recent_articles %>
+  <ul>
+    <% @recent_articles.each do |article| %>
+      <li><%= render 'article', blog: @blog, article: article %></li>
+    <% end %>
+  </ul>
+<% end %>
