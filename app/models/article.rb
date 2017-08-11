@@ -8,4 +8,6 @@ class Article < ApplicationRecord
   validates :body,
     presence: true,
     length: { minimum: 1 }
+
+  scope :recent, -> (n){ order("created_at DESC").limit(n) }
 end

@@ -9,7 +9,7 @@ class SitesController < ApplicationController
       return
     end
 
-    @recent_articles = @blog.articles ? nil : @blog.articles.order("created_at DESC").limit(5)
+    @recent_articles = @blog.articles ? @blog.articles.recent(5) : nil
   end
 
   def show

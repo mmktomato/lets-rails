@@ -1,1 +1,13 @@
-<p>TODO: implement front page.</p>
+<h1>Recent Articles</h2>
+
+<% if @recent_articles %>
+  <ul>
+    <% @recent_articles.each do |article| %>
+      <li><%= render(
+                'shared/article',
+                article: article,
+                show_body: false,
+                show_blog_title: true) %></li>
+    <% end %>
+  </ul>
+<% end %>
