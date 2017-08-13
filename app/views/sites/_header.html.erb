@@ -2,4 +2,4 @@
           blog.title,
           site_index_path(blog_screen_name: blog.screen_name))
 %></h1>
-<p class="text-center"><%= blog.description %></p>
+<%= simple_format html_escape(blog.description), :class => "text-center" %>
