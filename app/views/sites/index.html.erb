@@ -3,7 +3,7 @@
 <% if @recent_articles %>
   <ul class="articles">
     <% @recent_articles.each do |article| %>
-      <li><%= render 'shared/article', article: article %></li>
+      <li><%= render 'article', article: article %></li>
     <% end %>
   </ul>
 <% end %>
