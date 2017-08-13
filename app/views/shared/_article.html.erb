@@ -1,15 +1,15 @@
 <%
-  show_blog_title = (defined? show_blog_title) ? show_blog_title : false
-  show_body = (defined? show_body) ? show_body : true
+  _show_blog_title = (defined? show_blog_title) ? show_blog_title : false
+  _show_body = (defined? show_body) ? show_body : true
 %>
 
 <div>
-  <h2><%= link_title = article.title + (show_blog_title ? " | " + article.blog.title : "")
+  <h2><%= link_title = article.title + (_show_blog_title ? " | " + article.blog.title : "")
           link_to(
             link_title,
             site_show_path(blog_screen_name: article.blog.screen_name, article_id: article.id))
   %></h2>
-  <% if show_body %>
+  <% if _show_body %>
     <p><%= article.body %></p>
   <% end %>
 </div>
