@@ -1,7 +1,7 @@
 <%= render 'header', blog: @blog %>
 
 <% if @recent_articles %>
-  <ul>
+  <ul class="articles">
     <% @recent_articles.each do |article| %>
       <li><%= render 'shared/article', article: article %></li>
     <% end %>

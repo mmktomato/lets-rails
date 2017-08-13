@@ -3,13 +3,13 @@
   _show_body = (defined? show_body) ? show_body : true
 %>
 
-<div>
+<div class="article">
   <h2><%= link_title = article.title + (_show_blog_title ? " | " + article.blog.title : "")
           link_to(
             link_title,
             site_show_path(blog_screen_name: article.blog.screen_name, article_id: article.id))
   %></h2>
   <% if _show_body %>
-    <p><%= article.body %></p>
+    <p class="article-body"><%= article.body %></p>
   <% end %>
 </div>
