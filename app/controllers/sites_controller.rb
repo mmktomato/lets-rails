@@ -9,7 +9,8 @@ class SitesController < ApplicationController
       return
     end
 
-    @recent_articles = @blog.articles ? @blog.articles.recent(5) : nil
+    page = params[:page] ? params[:page] : 1
+    @recent_articles = @blog.articles ? @blog.articles.page(page).per(5).recent_created : nil
   end
 
   def show

@@ -9,5 +9,6 @@ class Article < ApplicationRecord
     presence: true,
     length: { minimum: 1 }
 
-  scope :recent, -> (n){ order("created_at DESC").limit(n) }
+  scope :recent_created, -> { order("created_at DESC") }
+  scope :recent, -> (n){ recent_created.limit(n) }
 end

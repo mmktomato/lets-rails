@@ -6,4 +6,6 @@
       <li><%= render 'article', article: article %></li>
     <% end %>
   </ul>
+
+  <%= paginate @recent_articles %>
 <% end %>
