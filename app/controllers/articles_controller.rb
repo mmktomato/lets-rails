@@ -2,6 +2,7 @@ class ArticlesController < ApplicationController
   before_action :authenticate_user!
 
   def new
+    @blog = get_blog params[:blog_id]
   end
 
   def create

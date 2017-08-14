@@ -51,6 +51,7 @@
     <% end %>
 
     <div class="body-content <%= controller.controller_name %>">
+      <%= breadcrumbs separator: " > " %>
       <%= yield %>
     </div>
   </body>
