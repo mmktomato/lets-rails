@@ -11,6 +11,7 @@ class SitesController < ApplicationController
 
     page = params[:page] ? params[:page] : 1
     @recent_articles = @blog.articles ? @blog.articles.page(page).per(5).recent_created : nil
+    @title = @blog.title
   end
 
   def show
@@ -20,6 +21,8 @@ class SitesController < ApplicationController
     if @article == nil
       redirect_to site_index_path(blog_screen_name: @blog.screen_name)
     end
+
+    @title = @article.title + " | " + @blog.title
   end
 
   private def get_blog(screen_name)
