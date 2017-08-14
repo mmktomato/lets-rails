@@ -5,7 +5,8 @@ class Blog < ApplicationRecord
   validates :screen_name,
     presence: true,
     length: { minimum: 1 },
-    uniqueness: true
+    uniqueness: true,
+    format: { with: /\A[a-zA-Z0-9_-]+\z/ }
 
   validates :title,
     presence: true,
