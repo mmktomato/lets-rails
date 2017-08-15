@@ -20,18 +20,37 @@ class BlogsController < ApplicationController
   end
 
   def show
-    @blog = Blog.find(params[:id])
+    @blog = get_blog(params[:id])
     @articles = Article.where(blog_id: @blog.id)
   end
 
   def destroy
-    @blog = Blog.find(params[:id])
+    @blog = get_blog(params[:id])
     @blog.destroy
 
     redirect_to blogs_path
   end
 
+  def edit
+    @blog = get_blog(params[:id])
+  end
+
+  def update
+    @blog = get_blog(params[:id])
+
+    if @blog.update(blog_params(params[:blog]))
+      redirect_to blog_path(id: @blog.id)
+    else
+      @validation_errors = @blog.errors
+      render 'edit'
+    end
+  end
+
   private def blog_params(param)
     return param.permit(:screen_name, :title, :description)
+  end
+
+  private def get_blog(id)
+    return Blog.find(id)
   end
 end

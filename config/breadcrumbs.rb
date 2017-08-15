@@ -12,6 +12,11 @@ crumb :show_blog do |blog|
   parent :blogs
 end
 
+crumb :edit_blog do |blog|
+  link "Edit blog", edit_blog_path(id: blog.id)
+  parent :show_blog, blog
+end
+
 crumb :new_article do |blog|
   link 'New Article', new_article_path(blog_id: blog.id)
   parent :show_blog, blog

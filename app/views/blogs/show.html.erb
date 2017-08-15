@@ -1,5 +1,9 @@
 <% breadcrumb :show_blog, @blog %>
 
+<p>
+<strong><a href="<%= edit_blog_path(id: @blog.id) %>">Edit this blog</a></strong>
+</p>
+
 <%= render(
       'shared/list_header',
       headding: 'Articles',

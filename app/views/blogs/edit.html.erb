@@ -1,0 +1,7 @@
+<% breadcrumb :edit_blog, @blog %>
+<h2>Edit blog</h2>
+<%= render(
+      'form',
+      form_action: blog_path(id: @blog.id),
+      form_method: :put,
+      cancel_url: blog_path(id: @blog.id)) %>
