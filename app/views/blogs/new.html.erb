@@ -3,6 +3,7 @@
 <h2>New blog</h2>
 
 <div class="form-horizontal" role="form">
+<% cancel_url = blogs_path %>
 <%= form_for :blog, url: blogs_path do |f| %>
   <div class="form-group">
     <%= f.label :screen_name, "Screen Name", class: "control-label col-sm-2" %>
@@ -25,6 +26,7 @@
   <div class="form-group">
     <div class="col-sm-offset-2 col-sm-10">
       <%= f.button "Create", class: "btn btn-success" %>
+      <%= link_to "Cancel", cancel_url, class: "btn btn-default" %>
     </div>
   </div>
 <% end %>
