@@ -7,6 +7,9 @@
       },
       create_show_url: -> (article){
         site_show_path(blog_screen_name: @blog.screen_name, article_id: article.id)
+      },
+      create_delete_url: -> (article){
+        article_path(blog_id: @blog.id, id: article.id)
       })
 %>
 

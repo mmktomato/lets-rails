@@ -3,7 +3,8 @@
       'shared/list_items',
       items: @blogs,
       create_detail_url: -> (blog){ blog_path(blog.id) },
-      create_show_url: -> (blog){ site_index_path(blog_screen_name: blog.screen_name) })
+      create_show_url: -> (blog){ site_index_path(blog_screen_name: blog.screen_name) },
+      create_delete_url: -> (blog){ blog_path(blog.id) })
 %>
 
 <a href="<%= new_blog_path %>">create new blog.</a>

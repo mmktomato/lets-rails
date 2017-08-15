@@ -5,7 +5,20 @@
         <a href="<%= create_detail_url.call(item) %>">
           <span class="list-group-item-heading h3"><%= item.title %></span>
         </a>
-        <a class="btn btn-default pull-right" href="<%= create_show_url.call(item) %>" target="_blank" role="button">Show</a>
+        <div class="btn-group pull-right" role="group">
+          <%= link_to(
+                "Show",
+                create_show_url.call(item),
+                class: "btn btn-default",
+                target: "_blank",
+                role: "button") %>
+          <%= link_to(
+                "Delete",
+                create_delete_url.call(item),
+                class: "btn btn-danger",
+                role: "button",
+                method: :delete) %>
+        </div>
         <% if defined? item.description %>
           <p class="list-group-item-text"><%= item.description %></p>
         <% end %>
