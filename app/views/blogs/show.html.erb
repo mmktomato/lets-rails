@@ -1,4 +1,11 @@
 <% breadcrumb :show_blog, @blog %>
+
+<%= render(
+      'shared/list_header',
+      headding: 'Articles',
+      new_item_url: new_article_path(blog_id: @blog.id),
+      new_item_link: 'create new article') %>
+
 <%= render(
       'shared/list_items',
       items: @articles,
@@ -12,5 +19,3 @@
         article_path(blog_id: @blog.id, id: article.id)
       })
 %>
-
-<a href="<%= new_article_path(blog_id: @blog.id) %>">create new article.</a>
