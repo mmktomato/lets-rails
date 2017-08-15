@@ -3,11 +3,12 @@
     <% items.each do |item| %>
       <li class="list-group-item">
         <a href="<%= create_detail_url.call(item) %>">
-          <h3 class="list-group-item-heading"><%= item.title %></h3>
-          <% if defined? item.description %>
-            <p class="list-group-item-text"><%= item.description %></p>
-          <% end %>
+          <span class="list-group-item-heading h3"><%= item.title %></span>
         </a>
+        <a class="btn btn-default pull-right" href="<%= create_show_url.call(item) %>" target="_blank" role="button">Show</a>
+        <% if defined? item.description %>
+          <p class="list-group-item-text"><%= item.description %></p>
+        <% end %>
       </li>
     <% end %>
   </ul>

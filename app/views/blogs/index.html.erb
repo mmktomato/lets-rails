@@ -1,3 +1,9 @@
 <% breadcrumb :blogs %>
-<%= render 'shared/list_items', items: @blogs, create_detail_url: lambda { |blog| blog_path(blog.id) } %>
+<%= render(
+      'shared/list_items',
+      items: @blogs,
+      create_detail_url: -> (blog){ blog_path(blog.id) },
+      create_show_url: -> (blog){ site_index_path(blog_screen_name: blog.screen_name) })
+%>
+
 <a href="<%= new_blog_path %>">create new blog.</a>
