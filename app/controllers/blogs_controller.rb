@@ -21,7 +21,9 @@ class BlogsController < ApplicationController
 
   def show
     @blog = get_blog(params[:id])
-    @articles = Article.where(blog_id: @blog.id)
+
+    page = params[:page] ? params[:page] : 1
+    @articles = @blog.articles ? @blog.articles.page(page).per(5).recent_created : nil
   end
 
   def destroy
