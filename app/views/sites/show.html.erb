@@ -1,3 +1,39 @@
-<%= render 'header', blog: @blog %>
-<%= render 'article', article: @article %>
+<%= render 'sites/header', blog: @blog %>
+<%= render 'sites/article', article: @article, show_comment_link: false %>
 
+<% if 0 < @article.comments.count %>
+  <h3 id="comments">Comments:</h3>
+  <ul>
+    <% @article.comments.each do |comment| %>
+      <% if comment.id %>
+        <li>
+          <h4><%= comment.commenter %>  <small>posted at <%= comment.created_at.strftime("%Y-%m-%d") %></small></h4>
+          <%= simple_format html_escape(comment.body), class: "comment-body" %>
+        </li>
+      <% end %>
+  <% end %>
+  </ul>
+<% end %>
+
+<h3>Add Comment:</h3>
+<div class="form-horizontal" role="form">
+  <%= form_for :comment, url: comment_create_path(blog_id: @blog.id, article_id: @article.id) do |f| %>
+    <div class="form-group">
+      <%= f.label :commenter, "Your Name", class: "control-label col-sm-2" %>
+      <div class="col-sm-6">
+        <%= f.text_field :commenter, class: "form-control" %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label :body, "Your Comment", class: "control-label col-sm-2" %>
+      <div class="col-sm-6">
+        <%= f.text_area :body, class: "form-control" %>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-10">
+        <%= f.button "OK", class: "btn btn-success" %>
+      </div>
+    </div>
+  <% end %>
+</div>

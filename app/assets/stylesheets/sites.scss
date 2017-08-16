@@ -3,6 +3,8 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .sites {
+    $body-indent: 10px;
+
     .articles {
         list-style: none;
         padding-left: 0px;
@@ -12,7 +14,13 @@
         margin: 0px 50px 50px 50px;
 
         &-body {
-            margin-left: 10px;
+            margin-left: $body-indent;
+        }
+    }
+
+    .comment {
+        &-body {
+            margin-left: $body-indent;
         }
     }
 }

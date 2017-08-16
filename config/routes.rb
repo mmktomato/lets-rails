@@ -11,4 +11,5 @@ Rails.application.routes.draw do
 
   get ':blog_screen_name' => 'sites#index', as: :site_index
   get ':blog_screen_name/:article_id' => 'sites#show', as: :site_show
+  post ':blog_screen_name/:article_id/comment/new' => 'comments#create', as: :comment_create
 end

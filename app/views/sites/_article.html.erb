@@ -4,4 +4,10 @@
             site_show_path(blog_screen_name: article.blog.screen_name, article_id: article.id))
   %></h2>
   <%= simple_format html_escape(article.body), :class => "article-body" %>
+  <% if show_comment_link %>
+    <%= link_to(
+          "show comments",
+          site_show_path(blog_screen_name: article.blog.screen_name, article_id: article.id) + '#comments')
+    %>
+  <% end %>
 </div>
