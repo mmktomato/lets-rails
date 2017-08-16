@@ -1,8 +1,11 @@
 <div class="article">
-  <h2><%= link_to(
-            article.title,
-            site_show_path(blog_screen_name: article.blog.screen_name, article_id: article.id))
-  %></h2>
+  <h2>
+    <small><%= article.created_at.strftime("%Y-%m-%d") %>  </small>
+    <%= link_to(
+          article.title,
+          site_show_path(blog_screen_name: article.blog.screen_name, article_id: article.id))
+    %>
+  </h2>
   <%= simple_format html_escape(article.body), :class => "article-body" %>
   <% if show_comment_link %>
     <%= link_to(
